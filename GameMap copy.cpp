@@ -31,6 +31,7 @@ void settingGameMap()
     keypad(stdscr,TRUE);
     timeout(30);
     int row = LINES-1,col = COLS-COLS,move_row = 0,move_col=0;
+    // string str_start = "Game Start";
     for (int i = 0; i < LINES; i++)
     {
         for (int j = 0; j < COLS; j++)
@@ -45,14 +46,24 @@ void settingGameMap()
             }
         }
     }
+    // mvaddstr(row/2,COLS/2,str_start.c_str());
     int ch = 'y';
+    // Player player;
+    // string ch_var;
     while ((ch!='q')&&(ch='Q'))
     {
-        mvaddch(row/2,COLS/2,PLAYER);
+        // mvaddch(++move_row,++move_col,OPPONENT);
+        mvaddch(row,col,PLAYER);
+        // mvaddch(10,5,WALL);
+        // mvaddch(11,5,OPPONENT);
         ch = getch();
+        // 
+        // player.appear(row,col);
+        // ch_var = to_string(player.shape_size_row)+" , "+to_string(player.shape_size_col);
+        // mvprintw(20,30,ch_var.c_str());
         switch (ch)
         {
-            // case 'w':       
+            case 'w':       
             case KEY_UP:    
                 if(is_move_okay(row-1,col)) row -= 1; break;
             case KEY_DOWN:  

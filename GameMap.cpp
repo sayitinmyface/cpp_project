@@ -30,7 +30,7 @@ void settingGameMap()
     curs_set(0);
     // start main
     keypad(stdscr,TRUE);
-    timeout(30);
+    timeout(90);
     // int row = LINES-1,col = COLS-COLS,move_row = 0,move_col=0;
     int bt_row = LINES-1 , left_col = COLS/3 , right_col = COLS-COLS/3 , center_col = COLS/2; 
     int row = bt_row-1,col = center_col+5;

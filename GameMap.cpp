@@ -36,12 +36,28 @@ void settingGameMap()
     int row,col;
     // 
     setOutLine();//테두리
-    setBlock(bt_row-1,center_col);//블럭 쌓기
-
+    // setBlock(bt_row-1,center_col);//블럭 쌓기
+    // 
+    int inc_row = bt_row-1,inc_col = center_col,switch_col=-5,random;
+    // 처음 시작 계단
+    mvaddstr(inc_row,inc_col,"|####|");
     // 
     int ch = 'y';
     while ((ch!='q')&&(ch='Q'))
     {
+        random = rand()%8;
+        for (int j = 0; j < random; j++)
+        {
+            if(inc_col>COLS/3-10&&inc_col<COLS-COLS/3+10)
+            {
+                inc_row = inc_row-1;
+                inc_col = inc_col+switch_col;
+                mvaddstr(inc_row,inc_col,"|####|");
+            }
+        }
+        if(switch_col==-5){switch_col = 5;}
+        else{switch_col=-5;}
+        random = rand()%8;
         // mvaddch(row/2,COLS/2,PLAYER);
         ch = getch();
         switch (ch)
@@ -84,25 +100,25 @@ void setOutLine()
         }
     }
 }
-void setBlock(int move_row,int move_col)
-{
-    // 
-    int inc_row = move_row,inc_col = move_col,switch_col=-5,random = rand()%10;
-    // 처음 시작 계단
-    mvaddstr(move_row,move_col,"|####|");
-    for (int i = 0; i < 20; i++)
-    {        
-        for (int j = 0; j < random; j++)
-        {
-            if(inc_col>COLS/3-5&&inc_col<(COLS-5)-COLS/3)
-            {
-                inc_row = inc_row-1;
-                inc_col = inc_col+switch_col;
-                mvaddstr(inc_row,inc_col,"|####|");
-            }
-        }
-        if(switch_col==-5){switch_col = 5;}
-        else{switch_col=-5;}
-        random = rand()%10;
-    }
-}
+// void setBlock(int move_row,int move_col)
+// {
+//     // 
+//     int inc_row = move_row,inc_col = move_col,switch_col=-5,random = rand()%8;
+//     // 처음 시작 계단
+//     mvaddstr(move_row,move_col,"|####|");
+//     for (int i = 0; i < 10; i++)
+//     {        
+//         for (int j = 0; j < random; j++)
+//         {
+//             if(inc_col>COLS/3-5&&inc_col<COLS-COLS/3+5)
+//             {
+//                 inc_row = inc_row-1;
+//                 inc_col = inc_col+switch_col;
+//                 mvaddstr(inc_row,inc_col,"|####|");
+//             }
+//         }
+//         if(switch_col==-5){switch_col = 5;}
+//         else{switch_col=-5;}
+//         random = rand()%6;
+//     }
+// }
